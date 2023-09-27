@@ -1,21 +1,22 @@
 import java.util.Scanner;
 
-public class U1miniPROJECT {
+public class U1miniProject {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
         System.out.println("How many people are in the party?");
         int numOfPeople = scan.nextInt();                // storing the value for number of people in a variable
-        System.out.println("What was the bill?");
-        double bill = scan.nextInt();        // storing the value for the initial bill in a variable
-        System.out.println("How much do you want to tip?");
-        int tipPercent = scan.nextInt();             // storing the value for desired tip in a variable
+        System.out.println("What was the initial bill?");
+        double bill = scan.nextDouble();        // storing the value for the initial bill in a variable
+        System.out.println("What percentage do you want to tip?");
+        double tipPercent = scan.nextInt();        // storing the value for desired tip in a variable
+        tipPercent /= 100;
 
 
-        double totalTip = bill * tipPercent / 100;     // initializing and calculating
-        double totalBill = bill * totalTip;
-        double billPer = totalBill / numOfPeople;
-        double tipPer = totalTip / numOfPeople;
+        double totalTip = ((int) ((bill*tipPercent)*100))/100.0;     // declaring and calculating
+        double totalBill = ((int) ((bill + totalTip)*100))/100.0;
+        double billPer = (int) (totalBill / numOfPeople*100)/100.0;
+        double tipPer = (int) ((totalTip/numOfPeople)*100)/100.0;
 
         System.out.println("Your bill per person is $" + billPer);
         System.out.println();
